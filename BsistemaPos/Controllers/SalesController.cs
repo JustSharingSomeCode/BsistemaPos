@@ -43,6 +43,8 @@ namespace BsistemaPos.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Sale sale)
         {
+            sale.SubTotal = sale.Quantity * sale.UnitPrice;
+
             _context.Sales.Add(sale);
             await _context.SaveChangesAsync();
             return Ok(sale);
