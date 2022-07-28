@@ -30,6 +30,12 @@ namespace BsistemaPos.Controllers
         public async Task<IActionResult> Get(string id)
         {
             var client = await _context.Clients.FindAsync(id);
+
+            if(client == null)
+            {
+                return NotFound();
+            }
+
             return Ok(client);
         }
 

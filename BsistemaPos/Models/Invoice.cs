@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace BsistemaPos.Models
 {
@@ -16,6 +17,7 @@ namespace BsistemaPos.Models
         public double Iva { get; set; }
         public DateTime InvoiceDate { get; set; }
 
+        [JsonIgnore]
         public virtual Client ClientIdFkNavigation { get; set; } = null!;
         public virtual ICollection<Sale> Sales { get; set; }
     }
