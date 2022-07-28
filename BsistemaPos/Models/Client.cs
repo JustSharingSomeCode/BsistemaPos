@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace BsistemaPos.Models
 {
@@ -7,14 +8,15 @@ namespace BsistemaPos.Models
     {
         public Client()
         {
-            Invoices = new HashSet<Invoice>();
+            //Invoices = new HashSet<Invoice>();
         }
 
         public string ClientId { get; set; } = null!;
         public string CName { get; set; } = null!;
         public string Phone { get; set; } = null!;
         public string CAddress { get; set; } = null!;
-
-        public virtual ICollection<Invoice> Invoices { get; set; }
+        /*
+        [JsonIgnore]
+        public virtual ICollection<Invoice> Invoices { get; set; }*/
     }
 }

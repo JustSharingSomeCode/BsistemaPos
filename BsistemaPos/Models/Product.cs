@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace BsistemaPos.Models
 {
@@ -7,7 +8,7 @@ namespace BsistemaPos.Models
     {
         public Product()
         {
-            Sales = new HashSet<Sale>();
+            //Sales = new HashSet<Sale>();
         }
 
         public int ProductId { get; set; }
@@ -15,7 +16,8 @@ namespace BsistemaPos.Models
         public string PDescription { get; set; } = null!;
         public int Stock { get; set; }
         public string? Img { get; set; }
-
-        public virtual ICollection<Sale> Sales { get; set; }
+        /*
+        [JsonIgnore]
+        public virtual ICollection<Sale> Sales { get; set; }*/
     }
 }
