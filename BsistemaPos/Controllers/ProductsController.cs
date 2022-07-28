@@ -8,72 +8,72 @@ namespace BsistemaPos.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InvoicesController : ControllerBase
+    public class ProductsController : ControllerBase
     {
-        sistemaPosDBContext _context;
+        private sistemaPosDBContext _context;
 
-        public InvoicesController(sistemaPosDBContext context)
+        public ProductsController(sistemaPosDBContext context)
         {
             _context = context;
         }
 
-        // GET: api/<InvoicesController>
+        // GET: api/<ProductsController>
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var list = await _context.Invoices.ToListAsync();
+            var list = await _context.Products.ToListAsync();
             return Ok(list);
         }
 
-        // GET api/<InvoicesController>/5
+        // GET api/<ProductsController>/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var invoice = await _context.Invoices.FindAsync(id);
-            
-            if(invoice == null)
+            var product = await _context.Products.FindAsync(id);
+
+            if(product == null)
             {
                 return NotFound();
             }
 
-            return Ok(invoice);
+            return Ok(product);
         }
 
-        // POST api/<InvoicesController>
+        // POST api/<ProductsController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Invoice invoice)
+        public async Task<IActionResult> Post([FromBody] Product product)
         {
-            _context.Invoices.Add(invoice);
+            _context.Products.Add(product);
             await _context.SaveChangesAsync();
-            return Ok(invoice);
+            return Ok(product);
         }
 
-        // PUT api/<InvoicesController>/5
+        // PUT api/<ProductsController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Invoice invoice)
+        public async Task<IActionResult> Put(int id, [FromBody] Product product)
         {
-            if(id != invoice.InvoiceId)
+            if(id != product.ProductId)
             {
                 return NotFound();
             }
 
-            _context.Invoices.Update(invoice);
+            _context.Products.Update(product);
             await _context.SaveChangesAsync();
             return Ok();
         }
 
-        // DELETE api/<InvoicesController>/5
+        // DELETE api/<ProductsController>/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var invoice = await _context.Invoices.FindAsync(id);
+            var product = await _context.Products.FindAsync(id);
 
-            if(invoice == null)
+            if(product == null)
             {
                 return NotFound();
             }
 
-            _context.Invoices.Remove(invoice);
+            _context.Products.Remove(product);
             await _context.SaveChangesAsync();
             return Ok();
         }
