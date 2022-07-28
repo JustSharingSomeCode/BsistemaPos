@@ -16,6 +16,8 @@ namespace BsistemaPos.Models
         public string PDescription { get; set; } = null!;
         public int Stock { get; set; }
         public string? Img { get; set; }
+        public decimal Price { get; set; }
+
         /*
         [JsonIgnore]
         public virtual ICollection<Sale> Sales { get; set; }*/

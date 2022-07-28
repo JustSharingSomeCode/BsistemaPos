@@ -100,6 +100,10 @@ namespace BsistemaPos.Models
                     .HasColumnName("p_name");
 
                 entity.Property(e => e.Stock).HasColumnName("stock");
+
+                entity.Property(e => e.Price)
+                    .HasColumnType("money")
+                    .HasColumnName("price");
             });
 
             modelBuilder.Entity<Sale>(entity =>
