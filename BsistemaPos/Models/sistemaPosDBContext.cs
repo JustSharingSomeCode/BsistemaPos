@@ -63,8 +63,6 @@ namespace BsistemaPos.Models
                     .HasColumnType("date")
                     .HasColumnName("invoice_date");
 
-                entity.Property(e => e.Iva).HasColumnName("iva");
-
                 entity.Property(e => e.Total)
                     .HasColumnType("money")
                     .HasColumnName("total");
