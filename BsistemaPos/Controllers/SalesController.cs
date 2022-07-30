@@ -21,7 +21,7 @@ namespace BsistemaPos.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var list = await _context.Sales.ToListAsync();
+            var list = await _context.Sales.Include(s => s.Product).ToListAsync();
             return Ok(list);
         }
 

@@ -130,13 +130,13 @@ namespace BsistemaPos.Models
                     .HasForeignKey(d => d.InvoiceIdFk)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("sales_invoices_fk");
-
-                entity.HasOne(d => d.ProductIdFkNavigation)
-                    .WithMany(p => p.Sales)
-                    .HasForeignKey(d => d.ProductIdFk)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("sales_products_fk");
                 */
+                entity.HasOne(d => d.Product)
+                    .WithMany()
+                    .HasForeignKey(d => d.ProductIdFk)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("sales_products_fk");
+                
             });
 
             OnModelCreatingPartial(modelBuilder);

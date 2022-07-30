@@ -13,6 +13,7 @@ namespace BsistemaPos.Models
         public decimal SubTotal { get; set; }
 
         //public virtual Invoice InvoiceIdFkNavigation { get; set; } = null!;
-        //public virtual Product ProductIdFkNavigation { get; set; } = null!;
+        public virtual Product? Product{ get; set; }
+        //public Product? Product { get; set; }
     }
 }

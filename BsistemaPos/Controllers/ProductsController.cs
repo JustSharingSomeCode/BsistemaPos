@@ -39,6 +39,14 @@ namespace BsistemaPos.Controllers
             return Ok(product);
         }
 
+        // GET api/<ProductsController>/5
+        [HttpGet("by_name/{name}")]
+        public async Task<IActionResult> Get(string name)
+        {
+            var list = await _context.Products.Where(p => p.PName.Contains(name)).ToListAsync();
+            return Ok(list);
+        }
+
         // POST api/<ProductsController>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Product product)
