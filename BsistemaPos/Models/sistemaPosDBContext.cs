@@ -66,14 +66,6 @@ namespace BsistemaPos.Models
                 entity.Property(e => e.Total)
                     .HasColumnType("money")
                     .HasColumnName("total");
-
-                /*
-                entity.HasOne(d => d.ClientIdFkNavigation)
-                    .WithMany(p => p.Invoices)
-                    .HasForeignKey(d => d.ClientIdFk)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("invoices_client_fk");
-                */
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -124,13 +116,6 @@ namespace BsistemaPos.Models
                     .HasColumnType("money")
                     .HasColumnName("unit_price");
 
-                /*
-                entity.HasOne(d => d.InvoiceIdFkNavigation)
-                    .WithMany(p => p.Sales)
-                    .HasForeignKey(d => d.InvoiceIdFk)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("sales_invoices_fk");
-                */
                 entity.HasOne(d => d.Product)
                     .WithMany()
                     .HasForeignKey(d => d.ProductIdFk)
