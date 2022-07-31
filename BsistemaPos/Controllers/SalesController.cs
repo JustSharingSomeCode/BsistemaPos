@@ -39,6 +39,14 @@ namespace BsistemaPos.Controllers
             return Ok(sale);
         }
 
+        // GET api/<SalesController>/by_invoice/5
+        [HttpGet("by_invoice/{id}")]
+        public async Task<IActionResult> GetByInvoice(int id)
+        {
+            var list = await _context.Sales.Include(s => s.Product).Where(s => s.InvoiceIdFk == id).ToListAsync();
+            return Ok(list);
+        }
+
         // POST api/<SalesController>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Sale sale)
@@ -76,6 +84,23 @@ namespace BsistemaPos.Controllers
             }
 
             _context.Sales.Remove(sale);
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
+        // DELETE api/<SalesController>/5
+        [HttpDelete("by_invoice/{id}")]
+        public async Task<IActionResult> DeleteByInvoice(int id)
+        {
+            var sales = await _context.Sales.Where(s => s.InvoiceIdFk == id).ToListAsync();
+
+            if (sales == null)
+            {
+                return NotFound();
+            }
+
+            //_context.Sales.Remove(sale);
+            _context.Sales.RemoveRange(sales);
             await _context.SaveChangesAsync();
             return Ok();
         }
